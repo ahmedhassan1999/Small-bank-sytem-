@@ -1,0 +1,138 @@
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+/*const max = movements.reduce(
+  (maxx, curr) => (maxx < curr ? (maxx = curr) : (maxx = maxx)),
+  0
+);
+console.log('maxxxxxxxxxxxxxxxxxxxx');
+console.log(max);*/
+/*const user = 'Steven Tomas Willean';
+
+const userName = user
+  .toLowerCase()
+  .split(' ')
+  .map(name => name[0])
+  .join('');
+
+console.log(userName);*/
+
+const balace = movements.reduce(function (sum, curr, i) {
+  return (sum += curr);
+}, 0);
+console.log(balace);
+const Withdranal = movements.filter(mov => mov < 0);
+console.log(Withdranal);
+const deposite = movements.filter(function (mon) {
+  return mon > 0;
+});
+console.log(deposite);
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// LECTURES
+
+//const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+/////////////////////////////////////////////////
+////slice did not mutate
+let arr = ['a', 'b', 'c', 'd'];
+console.log(arr.slice(1, 2));
+console.log(arr.slice(-2));
+console.log(arr.slice(1, -1));
+console.log(arr.slice());
+console.log(...arr);
+////////// splice  mitate
+console.log(arr.splice(2));
+console.log(arr);
+////////////// reverse mutate
+let arr1 = [1, 2, 3, 4, 5];
+console.log(arr1.reverse());
+console.log(arr1);
+/////////////concat did not  mutate
+let New = arr.concat(arr1);
+console.log(New);
+console.log([...arr, ...arr1]);
+/////////////////// join
+console.log(New.join(' -  '));
+//////////////
+
+//for (const move of movements)
+for (const [i, move] of movements.entries()) {
+  if (move > 0) console.log(` move ${i + 1}: you deposited ${move}`);
+  else console.log(` move ${i + 1}: you take ${Math.abs(move)}`);
+}
+/////////// can not use break and continue
+movements.forEach(function (move, i) {
+  if (move > 0) console.log(` move ${i + 1}: you deposited ${move}`);
+  else console.log(` move ${i + 1}: you take ${Math.abs(move)}`);
+});
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+currencies.forEach(function (value, key) {
+  console.log(`${key}: ${value} `);
+});
+const eurtoUSA = 1.1;
+/*const result = movements.map(function (mov) {
+  return mov * eurtoUSA;
+});*/
+const result = movements.map(mov => mov * eurtoUSA);
+console.log(result);
+/*const movementsDescration = movements.map((move, i) => {
+  if (move > 0) return ` move ${i + 1}: you deposited ${move}`;
+  else return ` move ${i + 1}: you take ${Math.abs(move)}`;
+});*/
+const movementsDescration = movements.map(
+  (move, i) =>
+    `  ${i + 1}: You ${move > 0 ? 'deposite' : 'withdranal'} ${Math.abs(move)}`
+);
+
+console.log(movementsDescration);
+const calaculateAvaHuman = function (ages) {
+  const humanage = ages.map(age => (age <= 2 ? 2 * age : 16 * age * 4));
+  const adult = humanage.filter(age => age >= 18);
+  const ava =
+    humanage.reduce((sum, curr) => (sum += curr), 0) / humanage.length;
+  console.log(humanage);
+  console.log(adult);
+  console.log(ava);
+};
+calaculateAvaHuman([5, 2, 4, 1, 15, 8, 3]);
+const first = movements.find(mov => mov < 0);
+console.log(first);
+const Get = accounts.find(Name => Name.owner === 'Jessica Davis');
+console.log(Get);
+console.log('yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy');
+console.log(movements);
+console.log(movements.includes(-130));
+console.log(movements.some(mov => mov > 2000));
+const depos = mov => mov > 0;
+console.log(movements.some(depos));
+console.log(movements.every(depos));
+console.log(movements.filter(depos));
+const ar = [[1, 2, 3], 4, 5, [6, 7, 89]];
+console.log(ar.flat());
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+const Future = new Date(2037, 10, 19, 15, 23);
+console.log(+Future);
+const calculateDayPassed = (day1, day2) =>
+  Math.round(Math.abs(day2 - day1) / (1000 * 60 * 60 * 24));
+
+const day1 = calculateDayPassed(new Date(2040, 10, 15), new Date(2040, 10, 50));
+console.log(day1);
+const ingredains = ['mashrom', 'salt'];
+const thetime = setTimeout(
+  (ing1, ing2) => console.log(` here is your piza with${ing1} and ${ing2} `),
+  3000,
+  /*'mashrom',
+  'salt'*/
+  ...ingredains
+);
+if (ingredains.includes('salt')) clearTimeout(thetime);
+/*setInterval(() => {
+  const now = new Date();
+  console.log(now);
+}, 1000);*/
